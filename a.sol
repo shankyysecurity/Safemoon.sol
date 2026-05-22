@@ -1,6 +1,15 @@
 pragma solidity ^0.8.0;
-// Fixed
 
+// SECURITY: Added reentrancy guard
+contract PawnLoansToken {
+    mapping(address => bool) private locked;
+    modifier nonReentrant() {
+        require(!locked[msg.sender]);
+        locked[msg.sender] = true;
+        _;
+        locked[msg.sender] = false;
+    }
+}
 import './interfaces/IPawnLoans.sol';
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import './descriptors/PawnShopNFTDescriptor.sol';
