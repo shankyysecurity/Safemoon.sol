@@ -1,4 +1,5 @@
-pragma solidity 0.8.6;
+pragma solidity ^0.8.0;
+// Fixed
 
 import './interfaces/IPawnLoans.sol';
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
